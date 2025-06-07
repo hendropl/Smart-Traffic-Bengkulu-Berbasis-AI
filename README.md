@@ -586,33 +586,7 @@ CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0
 
 
 ## 📁 Project Structure
-
-
-smart-traffic-bengkulu-ai/
-├── app.py                  # Main Streamlit application
-├── requirements.txt        # Python dependencies
-├── README.md              # This file
-├── LICENSE               # MIT License
-├── models/
-│   ├── lstm_predictor.py  # LSTM model implementation
-│   ├── route_optimizer.py # Route optimization algorithms
-│   └── model_utils.py     # Utility functions
-├── data/
-│   ├── locations.py       # Bengkulu location coordinates
-│   ├── data_generator.py  # Synthetic data generation
-│   └── preprocessor.py    # Data preprocessing
-├── utils/
-│   ├── visualizations.py  # Chart and map utilities
-│   ├── calculations.py    # Distance and time calculations
-│   └── helpers.py         # Helper functions
-├── tests/
-│   ├── test_models.py     # Model unit tests
-│   ├── test_utils.py      # Utility function tests
-│   └── test_integration.py # Integration tests
-└── docs/
-    ├── api_reference.md   # API documentation
-    ├── user_guide.md      # User guide
-    └── deployment.md      # Deployment guide
+![Image](https://github.com/user-attachments/assets/c82c2bb4-df65-4f4d-96e3-2b6c3b20bfba)
 
 
 ## 🤝 Contributing
