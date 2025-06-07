@@ -642,21 +642,12 @@ CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0
 4. Push to branch (git push origin feature/AmazingFeature)
 5. Open Pull Request
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👥 Team
 
 - Hendro Paulus Limbong (G1A023091)
 - Muhammad Zuhri Al Kauri (G1A0230029)
 - Juan Agraprana Putra (G1A023085)
-  
-## 📞 Contact
-
-- *Email*: contact@smarttrafficbengkulu.ai
-- *Website*: https://smarttrafficbengkulu.ai
-- *GitHub*: https://github.com/username/smart-traffic-bengkulu-ai
 
 ## 🎯 Roadmap
 
