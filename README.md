@@ -20,6 +20,50 @@ Aplikasi web interaktif yang menggunakan teknologi Deep Learning untuk memberika
 - 🚨 *Alert System*: Peringatan otomatis untuk kemacetan parah
 - 📱 *Responsive Design*: Interface modern dengan animasi CSS
 
+## 🖥️ Interface
+
+### 🔸 Halaman Utama
+
+![Image](https://github.com/user-attachments/assets/16f34752-b770-404c-bdeb-5ad5351ba65b)
+
+- Menampilkan **peta interaktif real-time** dengan circle marker.
+- Klik marker untuk melihat **volume kendaraan** dan **status jalan**.
+- Dilengkapi **dropdown "Kontrol AI"** untuk memulai proses training atau prediksi.
+
+---
+
+### 🔸 Halaman AI Route Planner
+
+![Image](https://github.com/user-attachments/assets/db960822-ae7a-4959-ba8d-e39fde2be84a)  
+![Image](https://github.com/user-attachments/assets/a2f386bd-3b62-481b-8cd9-122f1cb592d5)
+
+- Pilih **lokasi awal** dan **lokasi tujuan**.
+- AI akan menghitung dan merekomendasikan **rute tercepat dan teraman**.
+- Visualisasi rute ditampilkan langsung di peta.
+
+---
+
+### 🔸 Halaman Analisis AI
+
+![Image](https://github.com/user-attachments/assets/f573f581-636a-414c-a6c5-b7df52fb9eeb)  
+![Image](https://github.com/user-attachments/assets/a04a078e-9660-4f0b-be81-991014363a76)
+
+- Menampilkan **daftar lokasi dengan kepadatan tertinggi**.
+- Disusun berdasarkan hasil analisis AI dari data historis dan real-time.
+
+---
+
+### 🔸 Halaman Prediksi AI
+
+![Image](https://github.com/user-attachments/assets/e3854409-b3a9-47dd-960e-424503bdcb9b)  
+![Image](https://github.com/user-attachments/assets/6c5dbe05-60c4-44a2-8dec-92c14955a16c)
+
+- Pilih **lokasi** untuk melihat **prediksi kemacetan** oleh AI.
+- Prediksi hanya tersedia **setelah menekan tombol "Training AI"** di dropdown kontrol.
+- Menyediakan insight hingga **3 jam ke depan**.
+
+---
+
 ## 🧠 Model AI dan Alasan Pemilihan
 
 ### LSTM (Long Short-Term Memory) Neural Network
