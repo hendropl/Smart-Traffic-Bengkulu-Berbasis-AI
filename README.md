@@ -586,7 +586,8 @@ CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0
 
 
 ## 📁 Project Structure
-![Image](https://github.com/user-attachments/assets/c82c2bb4-df65-4f4d-96e3-2b6c3b20bfba)
+
+![Image](https://github.com/user-attachments/assets/29be5f8a-c150-41f5-aff6-b83244c0450f)
 
 
 ## 🤝 Contributing
