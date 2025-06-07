@@ -557,8 +557,7 @@ Streamlit >= 1.28
 ### Installation
 bash
 # Clone repository
-git clone https://github.com/username/smart-traffic-bengkulu-ai.git
-cd smart-traffic-bengkulu-ai
+git clone https://github.com/hendropl/Smart-Traffic-Bengkulu-Berbasis-AI.git
 
 # Create virtual environment
 python -m venv venv
@@ -630,11 +629,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Team
 
-- *AI/ML Engineer*: Model development and optimization
-- *Backend Developer*: API and data pipeline
-- *Frontend Developer*: UI/UX and visualization
-- *Data Scientist*: Analytics and insights
-
+- Hendro Paulus Limbong (G1A023091)
+- Muhammad Zuhri Al Kauri (G1A0230029)
+- Juan Agraprana Putra (G1A023085)
+  
 ## 📞 Contact
 
 - *Email*: contact@smarttrafficbengkulu.ai
