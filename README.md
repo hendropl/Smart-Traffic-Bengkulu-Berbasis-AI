@@ -666,7 +666,7 @@ CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0
 |--------|-------|--------|
 | Prediction Accuracy | 85% | 90% |
 | Response Time | <2s | <1s |
-| Model Training Time | 15min | 10min |
+| Model Training Time | 23s | 20s |
 | API Uptime | 99.5% | 99.9% |
 
 ---
