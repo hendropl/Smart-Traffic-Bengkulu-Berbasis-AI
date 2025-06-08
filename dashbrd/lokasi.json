@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    { "type": "Feature", "properties": { "name": "Terminal Panorama" }, "geometry": { "type": "Point", "coordinates": [102.29404, -3.80966] } },
+    { "type": "Feature", "properties": { "name": "Pasar Minggu" }, "geometry": { "type": "Point", "coordinates": [102.266439, -3.793484] } },
+    { "type": "Feature", "properties": { "name": "Universitas Bengkulu" }, "geometry": { "type": "Point", "coordinates": [102.27139, -3.75874] } },
+    { "type": "Feature", "properties": { "name": "Bandar Udara Fatmawati Soekarno" }, "geometry": { "type": "Point", "coordinates": [102.3393898, -3.8629249] } },
+    { "type": "Feature", "properties": { "name": "Pelabuhan Pulau Baai" }, "geometry": { "type": "Point", "coordinates": [102.30666, -3.90492] } },
+    { "type": "Feature", "properties": { "name": "Masjid Jamik" }, "geometry": { "type": "Point", "coordinates": [102.262121, -3.792397] } },
+    { "type": "Feature", "properties": { "name": "Alun-alun Bengkulu" }, "geometry": { "type": "Point", "coordinates": [102.26815, -3.7634] } },
+    { "type": "Feature", "properties": { "name": "Mall Bengkulu Indah" }, "geometry": { "type": "Point", "coordinates": [102.26815, -3.81210] } },
+    { "type": "Feature", "properties": { "name": "Stadion Semarak" }, "geometry": { "type": "Point", "coordinates": [102.272844, -3.793453] } },
+    { "type": "Feature", "properties": { "name": "Pantai Panjang" }, "geometry": { "type": "Point", "coordinates": [102.257652, -3.804029] } },
+    { "type": "Feature", "properties": { "name": "Benteng Marlborough" }, "geometry": { "type": "Point", "coordinates": [102.251816, -3.787185] } },
+    { "type": "Feature", "properties": { "name": "UIN Fatmawati Sukarno Bengkulu" }, "geometry": { "type": "Point", "coordinates": [102.32799, -3.83466] } },
+    { "type": "Feature", "properties": { "name": "Rumah Sakit Bhayangkara Tingkat IV" }, "geometry": { "type": "Point", "coordinates": [102.2504825, -3.7900511] } },
+    { "type": "Feature", "properties": { "name": "Jl. Veteran" }, "geometry": { "type": "Point", "coordinates": [102.252814, -3.791488] } },
+    { "type": "Feature", "properties": { "name": "Jl. Ratu Agung" }, "geometry": { "type": "Point", "coordinates": [102.2573724, -3.8001227] } },
+    { "type": "Feature", "properties": { "name": "Jl. Basuki Rahmat" }, "geometry": { "type": "Point", "coordinates": [102.267941, -3.795646] } },
+    { "type": "Feature", "properties": { "name": "Jl. Pariwisata" }, "geometry": { "type": "Point", "coordinates": [102.254895, -3.800763] } },
+    { "type": "Feature", "properties": { "name": "Jl. Rawa Makmur" }, "geometry": { "type": "Point", "coordinates": [102.27430, -3.77986] } },
+    { "type": "Feature", "properties": { "name": "Jl. Salak Raya" }, "geometry": { "type": "Point", "coordinates": [102.30555, -3.82061] } },
+    { "type": "Feature", "properties": { "name": "Jl. Danau" }, "geometry": { "type": "Point", "coordinates": [102.30074, -3.80798] } },
+    { "type": "Feature", "properties": { "name": "Komplek Unib" }, "geometry": { "type": "Point", "coordinates": [102.2918568, -3.7473204] } },
+    { "type": "Feature", "properties": { "name": "Padang Kemiling" }, "geometry": { "type": "Point", "coordinates": [102.33572, -3.85490] } },
+    { "type": "Feature", "properties": { "name": "Muara Bangkahulu" }, "geometry": { "type": "Point", "coordinates": [102.28544, -3.76335] } },
+    { "type": "Feature", "properties": { "name": "Gading Cempaka" }, "geometry": { "type": "Point", "coordinates": [102.2899335, -3.7650414] } },
+    { "type": "Feature", "properties": { "name": "Soeprapto" }, "geometry": { "type": "Point", "coordinates": [102.264251, -3.795143] } },
+    { "type": "Feature", "properties": { "name": "Teluk Segara" }, "geometry": { "type": "Point", "coordinates": [102.2538002, -3.7916853] } },
+    { "type": "Feature", "properties": { "name": "Pematang Gubernur" }, "geometry": { "type": "Point", "coordinates": [102.29297, -3.76259] } },
+    { "type": "Feature", "properties": { "name": "Sawah Lebar" }, "geometry": { "type": "Point", "coordinates": [102.276149, -3.794190] } }
+  ]
+}
