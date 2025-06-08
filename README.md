@@ -34,7 +34,7 @@ Aplikasi web interaktif yang menggunakan teknologi Deep Learning untuk memberika
 
 ### 🔸 Halaman AI Route Planner
 
-![Image](https://github.com/user-attachments/assets/db960822-ae7a-4959-ba8d-e39fde2be84a)  
+
 ![Image](https://github.com/user-attachments/assets/055e436e-6e35-4c33-a14a-ff77d2b1b0fa)
 
 - Pilih **lokasi awal** dan **lokasi tujuan**.
