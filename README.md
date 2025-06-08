@@ -36,10 +36,12 @@ Aplikasi web interaktif yang menggunakan teknologi Deep Learning untuk memberika
 
 
 ![Image](https://github.com/user-attachments/assets/055e436e-6e35-4c33-a14a-ff77d2b1b0fa)
+Contoh Pengujian KE-2
+![Image](https://github.com/user-attachments/assets/b291b3dd-e79c-4cee-996e-8ce54f4f0a80)
 
 - Pilih **lokasi awal** dan **lokasi tujuan**.
 - AI akan menghitung dan merekomendasikan **rute tercepat dan teraman**.
-- Visualisasi rute ditampilkan langsung di peta.
+- Visualisasi rute 1,2,3 ditampilkan langsung di peta.
 
 ---
 
