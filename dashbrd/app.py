@@ -3,6 +3,9 @@ import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
+import json
+import openrouteservice
+from openrouteservice import convert
 import folium
 from streamlit_folium import st_folium
 import time
@@ -869,83 +872,103 @@ def create_traffic_dashboard():
         st.info(f"🕒 Terakhir update: {current_time.strftime('%H:%M:%S')} - 🤖 AI Monitoring Aktif")
     
     with tab2:
-        st.subheader("🛣️ AI Route Planner")
-        
-        locations = get_bengkulu_locations()
-        location_names = list(locations.keys())
-        
+        st.subheader("🗺️ AI Rute Planner")
+
+    # Load data lokasi dari file lokasi.json
+    try:
+        with open("lokasi.json", "r") as f:
+            lokasi_data = json.load(f)
+            lokasi_nama = [f["properties"]["name"] for f in lokasi_data["features"]]
+    except Exception as e:
+        st.error(f"Gagal membaca lokasi.json: {e}")
+        lokasi_nama = []
+
+    if lokasi_nama:
         col1, col2 = st.columns(2)
-        
         with col1:
-            origin = st.selectbox("📍 Titik Awal", location_names, index=0)
-        
+            start_name = st.selectbox("🚩 Titik Awal", lokasi_nama, key="start")
         with col2:
-            destination = st.selectbox("🎯 Tujuan", location_names, index=1)
-        
-        if st.button("🚀 Cari Rute Optimal", type="primary"):
-            if origin != destination:
-                with st.spinner("🤖 AI sedang menganalisis rute optimal..."):
-                    routes = get_stable_route_data(origin, destination, locations)
-                    predictor = get_lstm_predictor()
-                    
-                    # Dapatkan rekomendasi AI
-                    best_route, analyzed_routes = get_route_recommendation(routes, predictor)
-                    
-                    # Simpan di session state
-                    st.session_state.current_routes = analyzed_routes
-                    st.session_state.best_route = best_route
-                    st.session_state.route_origin = origin
-                    st.session_state.route_destination = destination
-        
-        # Tampilkan hasil jika ada
-        if hasattr(st.session_state, 'current_routes') and st.session_state.current_routes:
-            st.markdown("### 🤖 Hasil Analisis AI")
-            
-            # Tampilkan rute terbaik
-            if st.session_state.best_route:
-                best = st.session_state.best_route
-                st.markdown(f"""
-                <div class="best-route">
-                    <h3>🏆 REKOMENDASI AI TERBAIK</h3>
-                    <h4>{best['name']}</h4>
-                    <p><strong>Rute:</strong> {' → '.join(best['waypoint_names'])}</p>
-                    <p><strong>Jarak:</strong> {best['distance']:.2f} km</p>
-                    <p><strong>Estimasi Waktu:</strong> {best['estimated_time']:.0f} menit</p>
-                    <p><strong>Status Lalu Lintas:</strong> {best['congestion_icon']} {best['congestion_level']}</p>
-                    <p><strong>🤖 AI Confidence:</strong> {best['confidence']:.1f}%</p>
-                    <p><strong>🔬 AI Score:</strong> {best['ai_score']:.1f}/100</p>
+            end_name = st.selectbox("🏁 Titik Tujuan", lokasi_nama, key="end")
+
+        if st.button("🚗 Rencanakan Rute", type="primary"):
+
+            def get_coords(name):
+                for f in lokasi_data["features"]:
+                    if f["properties"]["name"] == name:
+                        return f["geometry"]["coordinates"]
+                return None
+
+            start_coords = get_coords(start_name)
+            end_coords = get_coords(end_name)
+
+            if start_coords and end_coords:
+                try:
+                    ors_client = openrouteservice.Client(
+                        key="5b3ce3597851110001cf62482db41f160b534a2f8a65e55086e233ae"
+                    )  # Ganti dengan API key kamu
+
+                    # Request rute utama + alternatif
+                    routes = ors_client.directions(
+                        coordinates=[start_coords, end_coords],
+                        profile='driving-car',
+                        format='geojson',
+                        alternative_routes={
+                            "share_factor": 0.6,
+                            "target_count": 3,
+                            "weight_factor": 2
+                        }
+                    )
+
+                    # Simpan ke session state untuk tampilkan peta dan info
+                    st.session_state.last_routes = {
+                        "routes": routes,
+                        "start": start_coords,
+                        "end": end_coords,
+                        "start_name": start_name,
+                        "end_name": end_name
+                    }
+
+                except Exception as e:
+                    st.error(f"Gagal membuat rute: {e}")
+
+    # Tampilkan peta dan info jika tersedia di session_state
+    if "last_routes" in st.session_state and st.session_state.last_routes:
+        data = st.session_state.last_routes
+        m = folium.Map(location=[data["start"][1], data["start"][0]], zoom_start=14)
+
+        folium.Marker(
+            location=[data["start"][1], data["start"][0]],
+            popup="Titik Awal: " + data["start_name"],
+            icon=folium.Icon(color='green')
+        ).add_to(m)
+
+        folium.Marker(
+            location=[data["end"][1], data["end"][0]],
+            popup="Titik Tujuan: " + data["end_name"],
+            icon=folium.Icon(color='red')
+        ).add_to(m)
+
+        # Warna untuk rute: rute utama biru, alternatif hijau & oranye
+        colors = ['blue', 'green', 'orange']
+
+        st.markdown("### 📋 Semua Opsi Rute (Termasuk Alternatif)")
+        for i, feature in enumerate(data["routes"]["features"]):
+            coords = [(pt[1], pt[0]) for pt in feature["geometry"]["coordinates"]]
+            folium.PolyLine(coords, color=colors[i % len(colors)], weight=5, opacity=0.7, tooltip=f"Rute {i+1}").add_to(m)
+
+            props = feature["properties"]["summary"]
+            distance_km = props["distance"] / 1000
+            duration_min = props["duration"] / 60
+
+            st.markdown(f"""
+                <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px; border-radius:8px;">
+                    <h4>Rute {i+1}</h4>
+                    <p><strong>Jarak:</strong> {distance_km:.2f} km</p>
+                    <p><strong>Estimasi Waktu:</strong> {duration_min:.1f} menit</p>
                 </div>
-                """, unsafe_allow_html=True)
-            
-            # Tampilkan semua rute
-            st.markdown("### 📋 Semua Opsi Rute")
-            
-            for i, route in enumerate(st.session_state.current_routes):
-                if route['type'] == 'main':
-                    card_class = "route-card"
-                else:
-                    card_class = "alternative-route"
-                
-                st.markdown(f"""
-                <div class="{card_class}">
-                    <h4>{route['name']}</h4>
-                    <p><strong>Via:</strong> {' → '.join(route['waypoint_names'])}</p>
-                    <p><strong>Jarak:</strong> {route['distance']:.2f} km | <strong>Waktu:</strong> {route['estimated_time']:.0f} menit</p>
-                    <p><strong>Status:</strong> {route['congestion_icon']} {route['congestion_level']} ({route['traffic_volume']} kendaraan/jam)</p>
-                    <p><strong>🤖 AI Score:</strong> {route['ai_score']:.1f}/100 | <strong>Confidence:</strong> {route['confidence']:.1f}%</p>
-                </div>
-                """, unsafe_allow_html=True)
-            
-            # Tampilkan peta dengan rute
-            st.markdown("### 🗺️ Visualisasi Rute")
-            route_map = create_traffic_map_with_routes(
-                st.session_state.route_origin,
-                st.session_state.route_destination,
-                st.session_state.current_routes,
-                locations,
-                st.session_state.best_route
-            )
-            st_folium(route_map, width=700, height=500)
+            """, unsafe_allow_html=True)
+
+        st_folium(m, width=700, height=500)
     
     with tab3:
         st.subheader("📈 Analisis Lalu Lintas AI")
@@ -993,7 +1016,7 @@ def create_traffic_dashboard():
                 </ul>
             </div>
             """, unsafe_allow_html=True)
-    
+
     with tab4:
         st.subheader("🔮 Prediksi Lalu Lintas AI")
         
